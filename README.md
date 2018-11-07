@@ -4,7 +4,7 @@
 
 ## Usage
 
-1.将项目整体存放于 AndroidStudio - plugins - android - lib - templates - other 目录下:
+1.将项目整体存放于 AndroidStudio - plugins - android - lib - templates - activities/other 目录下:
 
 ![](https://github.com/qingmei2/MVVMRhine-Template/blob/master/screenshots/savepath.png)
 

@@ -1,6 +1,7 @@
 package ${kotlinEscapedPackageName}
 
 import com.qingmei2.rhine.ext.viewmodel.addLifecycle
+import org.kodein.di.Kodein
 import org.kodein.di.android.AndroidComponentsWeakScope
 import org.kodein.di.generic.*
 
