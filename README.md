@@ -1,4 +1,4 @@
-# MVVMRhine-Template
+# MVVM-Rhine-Template
 
 [MVVMRhine](https://github.com/qingmei2/MVVM-Rhine)架构的代码模板，一键生成所有kt文件，节省键盘寿命。
 
