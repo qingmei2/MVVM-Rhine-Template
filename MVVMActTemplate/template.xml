@@ -1,91 +1,105 @@
 <?xml version="1.0"?>
 <template
-    format="5"
-    revision="3"
-    name="Activity for MVVM-Rhine"
-    description="Creates a new Activity of MVVM-Rhine."
-    minApi="16"
-    minBuildApi="8">
+        format="5"
+        revision="3"
+        name="Activity for MVVM-Rhine"
+        description="Creates a new Activity of MVVM-Rhine."
+        minApi="16"
+        minBuildApi="8">
 
-    <category value="Activity" />
+    <category value="Activity"/>
 
-    <dependency name="android-support-v4" revision="8" />
-
-    <parameter
-        id="packageName"
-        name="Package name"
-        type="string"
-        constraints="package"
-        default="com.mycompany.myapp" />
+    <dependency name="android-support-v4" revision="8"/>
 
     <parameter
-        id="objectKind"
-        name="Object Kind"
-        type="string"
-        constraints="nonempty"
-        default="Item"
-        help="Other examples are 'Person', 'Book', etc." />
+            id="packageName"
+            name="Package name"
+            type="string"
+            constraints="package"
+            default="com.mycompany.myapp"/>
 
     <parameter
-        id="className"
-        type="string"
-        constraints="nonempty|class|unique"
-        default="ItemActivity"
-        suggest="${extractLetters(objectKind)}Activity"
-        name="Activity class name" />
+            id="objectKind"
+            name="Object Kind"
+            type="string"
+            constraints="nonempty"
+            default="Item"
+            help="Other examples are 'Person', 'Book', etc."/>
 
     <parameter
-        id="activity_layout"
-        type="string"
-        constraints="layout|nonempty|unique"
-        default="activity_my"
-        suggest="activity_${extractLetters(objectKind?lower_case)}"
-        name="layout file name" />
+            id="className"
+            type="string"
+            constraints="nonempty|class|unique"
+            default="ItemActivity"
+            suggest="${extractLetters(objectKind)}Activity"
+            name="Activity class name"/>
 
     <parameter
-        id="viewDelegateClass"
-        type="string"
-        constraints="nonempty|class|unique"
-        default="MyViewDelegate"
-        suggest="${extractLetters(objectKind)}ViewDelegate"
-        name="ViewDelegate class name"
-        visible="true"/>
+            id="activity_layout"
+            type="string"
+            constraints="layout|nonempty|unique"
+            default="activity_my"
+            suggest="activity_${extractLetters(objectKind?lower_case)}"
+            name="layout file name"/>
 
     <parameter
-        id="viewModelClass"
-        type="string"
-        constraints="nonempty|class|unique"
-        default="MyViewModel"
-        suggest="${extractLetters(objectKind)}ViewModel"
-        name="ViewModel class name"
-        visible="true"/>
+            id="generateDelegateAndViewModel"
+            name="Generate ViewDelegate And ViewModel"
+            type="boolean"
+            default="true"
+            help="If true, ViewDelegate And ViewModel file will be generated"/>
 
     <parameter
-        id="kodeinModuleName"
-        type="string"
-        constraints="nonempty|class|unique"
-        default="myKodeinModule"
-        suggest="${extractLetters(objectKind?lower_case)}KodeinModule"
-        name="Kodein module name"
-        visible="true"/>
+            id="viewDelegateClass"
+            type="string"
+            constraints="nonempty|class|unique"
+            default="MyViewDelegate"
+            visibility="generateDelegateAndViewModel"
+            suggest="${extractLetters(objectKind)}ViewDelegate"
+            name="ViewDelegate class name"/>
 
     <parameter
-        id="activityBindingClass"
-        type="string"
-        constraints="nonempty|class|unique"
-        default="MyActivityBinding"
-        suggest="Activity${extractLetters(objectKind)}Binding"
-        name="DataBinding class name"
-        visible="true"/>
+            id="viewModelClass"
+            type="string"
+            constraints="nonempty|class|unique"
+            default="MyViewModel"
+            suggest="${extractLetters(objectKind)}ViewModel"
+            name="ViewModel class name"
+            visibility="generateDelegateAndViewModel"/>
+
+    <parameter
+            id="generateKodeinModule"
+            name="Generate DI module of Kodein"
+            type="boolean"
+            default="true"
+            help="If true, KodeinModule file will be generated"/>
+
+    <parameter
+            id="kodeinModuleName"
+            type="string"
+            constraints="nonempty|class|unique"
+            default="myKodeinModule"
+            suggest="${extractLetters(objectKind?lower_case)}KodeinModule"
+            name="Kodein module name"
+            visibility="generateKodeinModule"/>
+
+    <parameter
+            id="activityBindingClass"
+            type="string"
+            constraints="nonempty|class|unique"
+            default="MyActivityBinding"
+            suggest="Activity${extractLetters(objectKind)}Binding"
+            name="DataBinding class name"
+            visibility="false"/>
 
     <!-- 128x128 thumbnails relative to template.xml -->
     <thumbs>
         <!-- default thumbnail is required -->
-        <thumb>templates_list_fragment.png</thumb>
+        <thumb>templates_activity.png</thumb>
     </thumbs>
 
 
-    <globals file="globals.xml.ftl" />
-    <execute file="recipe.xml.ftl" />
+    <globals file="globals.xml.ftl"/>
+    <execute file="recipe.xml.ftl"/>
 
 </template>
