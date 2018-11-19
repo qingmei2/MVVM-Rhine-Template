@@ -1,5 +1,5 @@
 package ${kotlinEscapedPackageName}
 
-import com.qingmei2.rhine.base.viewdelegate.IViewDelegate
+import ${applicationPackage}.base.viewdelegates.BaseViewDelegate
 
-class ${viewDelegateClass}(val viewModel: ${viewModelClass}) : IViewDelegate
+class ${viewDelegateClass}(val viewModel: ${viewModelClass}) : BaseViewDelegate()
