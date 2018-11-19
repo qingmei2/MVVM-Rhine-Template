@@ -2,33 +2,28 @@ package ${kotlinEscapedPackageName}
 
 import android.support.v4.app.FragmentActivity
 import android.content.Intent
-import android.os.Bundle
 import org.kodein.di.Kodein
-import org.kodein.di.generic.bind
 import org.kodein.di.generic.instance
-import org.kodein.di.Copy
 import org.kodein.di.android.retainedKodein
 <#if applicationPackage??>
 import ${applicationPackage}.R
-import ${applicationPackage}.base.BaseActivity
+import com.qingmei2.rhine.base.view.BaseActivity
 import ${applicationPackage}.databinding.${activityBindingClass}
 </#if>
 
-class ${className} : BaseActivity<${activityBindingClass}>() {
+class ${className} : BaseActivity<${activityBindingClass}, ${viewDelegateClass}>() {
 
     override val kodein: Kodein by retainedKodein {
-        extend(parentKodein, copy = Copy.All)
+        extend(parentKodein)
         import(${kodeinModuleName})
-        bind<${className}>() with instance(this@${className})
     }
 
-    private val delegate: ${viewDelegateClass} by instance()
+    override val viewDelegate: ${viewDelegateClass} by instance()
 
     override val layoutId: Int = R.layout.${activity_layout}
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding.delegate = delegate
+	override fun initView() {
+        binding.delegate = viewDelegate
     }
 
     companion object {
