@@ -2,7 +2,7 @@
 <template
         format="5"
         revision="3"
-        name="Fragment for MVVM-Rhine"
+        name="Basic Fragment for MVVM-Rhine"
         description="Creates a new Fragment of MVVM-Rhine."
         minApi="16"
         minBuildApi="8">
@@ -39,7 +39,7 @@
             type="string"
             constraints="layout|nonempty|unique"
             default="fragment_my"
-            suggest="fragment_${extractLetters(objectKind?lower_case)}"
+            suggest="fragment_${classToResource(objectKind)}"
             name="layout file name"/>
 
     <parameter
@@ -69,6 +69,22 @@
             name="ViewModel class name"/>
 
     <parameter
+        id="generateNavigator"
+        name="Generate Navigator"
+        type="boolean"
+        default="false"
+        help="If true, Navigator file will be generated"/>
+
+    <parameter
+        id="navigatorClass"
+        type="string"
+        constraints="nonempty|class|unique"
+        default="MyNavigator"
+        visibility="generateNavigator"
+        suggest="${extractLetters(objectKind)}Navigator"
+        name="ViewDelegate class name"/>
+
+    <parameter
             id="generateKodeinModule"
             name="Generate DI module of Kodein"
             type="boolean"
@@ -92,6 +108,67 @@
             visibility="false"
             suggest="Fragment${extractLetters(objectKind)}Binding"
             name="DataBinding class name"/>
+
+    <parameter
+        id="generateDataSource"
+        name="Generate DataSource"
+        type="boolean"
+        default="true"
+        help="If true, DataSource file will be generated"/>
+
+    <parameter
+        id="dataSourceName"
+        type="string"
+        constraints="nonempty|class|unique"
+        default="MyDataSource"
+        suggest="${extractLetters(objectKind?lower_case)}DataSource"
+        name="Kodein module name"
+        visibility="false"/>
+
+    <parameter
+        id="remoteDataSourceInterfaceName"
+        type="string"
+        constraints="nonempty|class|unique"
+        default="IMyRemoteDataSource"
+        suggest="I${extractLetters(objectKind)}RemoteDataSource"
+        name="RemoteDataSource interface name"
+        visibility="false"/>
+
+    <parameter
+        id="localDataSourceInterfaceName"
+        type="string"
+        constraints="nonempty|class|unique"
+        default="IMyLocalDataSource"
+        suggest="I${extractLetters(objectKind)}LocalDataSource"
+        name="LocalDataSource interface name"
+        visibility="false"/>
+
+    <parameter
+        id="dataSourceRepositoryName"
+        type="string"
+        constraints="nonempty|class|unique"
+        default="MyDataSourceRepository"
+        suggest="${extractLetters(objectKind)}DataSourceRepository"
+        name="DataSourceRepository class name"
+        visibility="false"/>
+
+    <parameter
+        id="remoteDataSourceName"
+        type="string"
+        constraints="nonempty|class|unique"
+        default="MyRemoteDataSource"
+        suggest="${extractLetters(objectKind)}RemoteDataSource"
+        name="RemoteDataSource class name"
+        visibility="false"/>
+
+    <parameter
+        id="localDataSourceName"
+        type="string"
+        constraints="nonempty|class|unique"
+        default="MyLocalDataSource"
+        suggest="${extractLetters(objectKind)}LocalDataSource"
+        name="LocalDataSource class name"
+        visibility="false"/>
 
     <!-- 128x128 thumbnails relative to template.xml -->
     <thumbs>
