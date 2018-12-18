@@ -3,12 +3,12 @@ package ${kotlinEscapedPackageName}
 import org.kodein.di.Kodein
 import org.kodein.di.generic.instance
 <#if applicationPackage??>
-import com.qingmei2.rhine.base.view.BaseFragment
+import com.qingmei2.rhine.base.view.fragment.BaseFragment
 import ${applicationPackage}.R
 import ${applicationPackage}.databinding.${fragmentBindingClass}
 </#if>
 
-class ${className} : BaseFragment<${fragmentBindingClass}, ${viewDelegateClass}>() {
+class ${className} : BaseFragment<${fragmentBindingClass}>() {
 
     override val kodein: Kodein = Kodein.lazy {
         extend(parentKodein)
