@@ -18,13 +18,9 @@ class ${className} : BaseActivity<${activityBindingClass}>() {
         import(${kodeinModuleName})
     }
 
-    override val viewDelegate: ${viewDelegateClass} by instance()
+    val viewModel: ${viewModelClass} by instance()
 
     override val layoutId: Int = R.layout.${activity_layout}
-
-	override fun initView() {
-        binding.delegate = viewDelegate
-    }
 
     companion object {
 

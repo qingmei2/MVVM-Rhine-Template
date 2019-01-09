@@ -43,22 +43,6 @@
             name="layout file name"/>
 
     <parameter
-            id="generateDelegateAndViewModel"
-            name="Generate ViewDelegate And ViewModel"
-            type="boolean"
-            default="true"
-            help="If true, ViewDelegate And ViewModel file will be generated"/>
-
-    <parameter
-            id="viewDelegateClass"
-            type="string"
-            constraints="nonempty|class|unique"
-            default="MyViewDelegate"
-            visibility="generateDelegateAndViewModel"
-            suggest="${extractLetters(objectKind)}ViewDelegate"
-            name="ViewDelegate class name"/>
-
-    <parameter
             id="viewModelClass"
             type="string"
             constraints="nonempty|class|unique"
@@ -68,27 +52,11 @@
             visibility="generateDelegateAndViewModel"/>
 
     <parameter
-            id="generateNavigator"
-            name="Generate Navigator"
-            type="boolean"
-            default="true"
-            help="If true, Navigator file will be generated"/>
-
-    <parameter
-            id="navigatorClass"
-            type="string"
-            constraints="nonempty|class|unique"
-            default="MyNavigator"
-            visibility="generateNavigator"
-            suggest="${extractLetters(objectKind)}Navigator"
-            name="ViewDelegate class name"/>
-
-    <parameter
-            id="generateKodeinModule"
-            name="Generate DI module of Kodein"
-            type="boolean"
-            default="true"
-            help="If true, KodeinModule file will be generated"/>
+        id="generateViewModel"
+        name="Generate ViewModel"
+        type="boolean"
+        default="true"
+        help="If true, ViewModel file will be generated"/>
 
     <parameter
             id="kodeinModuleName"
@@ -100,6 +68,13 @@
             visibility="generateKodeinModule"/>
 
     <parameter
+        id="generateKodeinModule"
+        name="Generate DI module of Kodein"
+        type="boolean"
+        default="true"
+        help="If true, KodeinModule file will be generated"/>
+
+    <parameter
             id="activityBindingClass"
             type="string"
             constraints="nonempty|class|unique"
@@ -107,13 +82,6 @@
             suggest="Activity${extractLetters(objectKind)}Binding"
             name="DataBinding class name"
             visibility="false"/>
-
-    <parameter
-            id="generateDataSource"
-            name="Generate DataSource"
-            type="boolean"
-            default="true"
-            help="If true, DataSource file will be generated"/>
 
     <parameter
             id="dataSourceName"
@@ -169,6 +137,12 @@
             name="LocalDataSource class name"
             visibility="false"/>
 
+    <parameter
+        id="generateDataSource"
+        name="Generate DataSource"
+        type="boolean"
+        default="true"
+        help="If true, DataSource file will be generated"/>
     <!-- 128x128 thumbnails relative to template.xml -->
     <thumbs>
         <!-- default thumbnail is required -->

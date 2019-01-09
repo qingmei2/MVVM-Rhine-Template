@@ -43,23 +43,6 @@
             name="layout file name"/>
 
     <parameter
-            id="generateDelegateAndViewModel"
-            name="Generate ViewDelegate And ViewModel"
-            type="boolean"
-            default="true"
-            help="If true, ViewDelegate And ViewModel file will be generated"/>
-
-    <parameter
-            id="viewDelegateClass"
-            type="string"
-            constraints="nonempty|class|unique"
-            default="MyViewDelegate"
-            suggest="${extractLetters(objectKind)}ViewDelegate"
-            visibility="generateDelegateAndViewModel"
-            name="ViewDelegate class name"
-            visible="true"/>
-
-    <parameter
             id="viewModelClass"
             type="string"
             constraints="nonempty|class|unique"
@@ -69,27 +52,11 @@
             name="ViewModel class name"/>
 
     <parameter
-        id="generateNavigator"
-        name="Generate Navigator"
+        id="generateViewModel"
+        name="Generate ViewModel"
         type="boolean"
-        default="false"
-        help="If true, Navigator file will be generated"/>
-
-    <parameter
-        id="navigatorClass"
-        type="string"
-        constraints="nonempty|class|unique"
-        default="MyNavigator"
-        visibility="generateNavigator"
-        suggest="${extractLetters(objectKind)}Navigator"
-        name="ViewDelegate class name"/>
-
-    <parameter
-            id="generateKodeinModule"
-            name="Generate DI module of Kodein"
-            type="boolean"
-            default="true"
-            help="If true, KodeinModule file will be generated"/>
+        default="true"
+        help="If true, ViewModel file will be generated"/>
 
     <parameter
             id="kodeinModuleName"
@@ -101,6 +68,13 @@
             name="Kodein module name"/>
 
     <parameter
+        id="generateKodeinModule"
+        name="Generate DI module of Kodein"
+        type="boolean"
+        default="true"
+        help="If true, KodeinModule file will be generated"/>
+
+    <parameter
             id="fragmentBindingClass"
             type="string"
             constraints="nonempty|class|unique"
@@ -108,13 +82,6 @@
             visibility="false"
             suggest="Fragment${extractLetters(objectKind)}Binding"
             name="DataBinding class name"/>
-
-    <parameter
-        id="generateDataSource"
-        name="Generate DataSource"
-        type="boolean"
-        default="true"
-        help="If true, DataSource file will be generated"/>
 
     <parameter
         id="dataSourceName"
@@ -170,12 +137,18 @@
         name="LocalDataSource class name"
         visibility="false"/>
 
+    <parameter
+        id="generateDataSource"
+        name="Generate DataSource"
+        type="boolean"
+        default="true"
+        help="If true, DataSource file will be generated"/>
+
     <!-- 128x128 thumbnails relative to template.xml -->
     <thumbs>
         <!-- default thumbnail is required -->
         <thumb>templates_fragment.png</thumb>
     </thumbs>
-
 
     <globals file="globals.xml.ftl"/>
     <execute file="recipe.xml.ftl"/>

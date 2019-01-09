@@ -4,8 +4,8 @@
     <data>
 
         <variable
-            name="delegate"
-            type="${kotlinEscapedPackageName}.${viewDelegateClass}" />
+            name="fragment"
+            type="${kotlinEscapedPackageName}.${className}" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

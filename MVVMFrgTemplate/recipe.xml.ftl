@@ -9,21 +9,14 @@
     <instantiate from="root/res/layout/fragment.xml"
                  to="${escapeXmlAttribute(resOut)}/layout/${fragment_layout}.xml" />
 
-<#if generateDelegateAndViewModel>
+<#if generateViewModel>
     <instantiate from="root/src/app_package/BasicFragmentViewModel.${ktOrJavaExt}.ftl"
                  to="${escapeXmlAttribute(srcOut)}/${viewModelClass}.kt" />
-
-    <instantiate from="root/src/app_package/BasicFragmentViewDelegate.${ktOrJavaExt}.ftl"
-                 to="${escapeXmlAttribute(srcOut)}/${viewDelegateClass}.kt" />
 </#if>
 
 <#if generateKodeinModule>
     <instantiate from="root/src/app_package/BasicFragmentKodeinModule.${ktOrJavaExt}.ftl"
                  to="${escapeXmlAttribute(srcOut)}/${extractLetters(objectKind)}KodeinModule.kt" />
-</#if>
-<#if generateNavigator>
-    <instantiate from="root/src/app_package/BasicFragmentNavigator.${ktOrJavaExt}.ftl"
-                 to="${escapeXmlAttribute(srcOut)}/${navigatorClass}.kt" />
 </#if>
 <#if generateDataSource>
     <instantiate from="root/src/app_package/BasicDataSource.${ktOrJavaExt}.ftl"

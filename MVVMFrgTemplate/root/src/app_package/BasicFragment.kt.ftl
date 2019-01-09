@@ -15,17 +15,12 @@ class ${className} : BaseFragment<${fragmentBindingClass}>() {
         import(${kodeinModuleName})
     }
 
-    override val viewDelegate: ${viewDelegateClass} by instance()
+    val viewModel: ${viewModelClass} by instance()
 
     override val layoutId: Int = R.layout.${fragment_layout}
 
-    override fun initView() {
-        binding.delegate = viewDelegate
-    }
-
     companion object {
 
-        fun instance(): ${className} =
-                ${className}()
+        fun instance(): ${className} = ${className}()
     }
 }

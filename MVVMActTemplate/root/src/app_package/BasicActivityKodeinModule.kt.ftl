@@ -9,20 +9,8 @@ private const val ${extractLetters(objectKind?upper_case)}_MODULE_TAG = "${extra
 
 val ${kodeinModuleName} = Kodein.Module(${extractLetters(objectKind?upper_case)}_MODULE_TAG) {
 
-<#if generateNavigator>
-    bind<${navigatorClass}>() with scoped<AppCompatActivity>(AndroidLifecycleScope).singleton {
-        ${navigatorClass}(context)
-    }
-</#if>
     bind<${viewModelClass}>() with scoped<AppCompatActivity>(AndroidLifecycleScope).singleton {
         ${viewModelClass}.instance(context, instance())
-    }
-
-    bind<${viewDelegateClass}>() with scoped<AppCompatActivity>(AndroidLifecycleScope).singleton {
-        ${viewDelegateClass}(
-            instance()<#if generateNavigator>,
-            instance()</#if>
-        )
     }
 
 	bind<${dataSourceRepositoryName}>() with scoped<AppCompatActivity>(AndroidLifecycleScope).singleton {
