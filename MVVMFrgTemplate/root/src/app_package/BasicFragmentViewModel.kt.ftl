@@ -16,10 +16,11 @@ class ${viewModelClass}(
         fun instance(
             fragment: Fragment,
             repo: ${dataSourceRepositoryName}
-        ) =
-            ViewModelProviders
+        ): ${viewModelClass} {
+          return ViewModelProviders
                 .of(fragment, ${viewModelClass}Factory(repo))
                 .get(${viewModelClass}::class.java)
+        }
     }
 }
 

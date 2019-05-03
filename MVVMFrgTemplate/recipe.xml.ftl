@@ -9,18 +9,17 @@
     <instantiate from="root/res/layout/fragment.xml"
                  to="${escapeXmlAttribute(resOut)}/layout/${fragment_layout}.xml" />
 
-<#if generateViewModel>
     <instantiate from="root/src/app_package/BasicFragmentViewModel.${ktOrJavaExt}.ftl"
                  to="${escapeXmlAttribute(srcOut)}/${viewModelClass}.kt" />
-</#if>
 
 <#if generateKodeinModule>
     <instantiate from="root/src/app_package/BasicFragmentKodeinModule.${ktOrJavaExt}.ftl"
                  to="${escapeXmlAttribute(srcOut)}/${extractLetters(objectKind)}KodeinModule.kt" />
 </#if>
+
 <#if generateDataSource>
-    <instantiate from="root/src/app_package/BasicDataSource.${ktOrJavaExt}.ftl"
-                 to="${escapeXmlAttribute(srcOut)}/${extractLetters(objectKind)}DataSource.kt" />
+    <instantiate from="root/src/app_package/BasicRepository.${ktOrJavaExt}.ftl"
+                 to="${escapeXmlAttribute(srcOut)}/${extractLetters(objectKind)}Repository.kt" />
 </#if>
 
     <open file="${escapeXmlAttribute(srcOut)}/${className}.${ktOrJavaExt}" />
