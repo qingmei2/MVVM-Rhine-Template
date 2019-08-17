@@ -2,6 +2,9 @@
 <#import "root://activities/common/kotlin_macros.ftl" as kt>
 <recipe>
     <@kt.addAllKotlinDependencies />
+    
+    <merge from="root/AndroidManifest.xml.ftl"
+           to="${escapeXmlAttribute(manifestOut)}/AndroidManifest.xml" />
 
     <instantiate from="root/res/layout/activity.xml"
                  to="${escapeXmlAttribute(resOut)}/layout/${activity_layout}.xml" />
